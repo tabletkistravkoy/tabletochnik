@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТаблеткоТравы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Позволяет основному контенту занимать всю высоту */
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1; /* Позволяет основному контенту занимать оставшуюся высоту */
+        }
+
+        .tablet-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tablet-item {
+            background-color: white;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            width: calc(30% - 40px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tablet-item h3 {
+            margin: 0 0 10px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .info-frame {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .tablet-item {
+                width: calc(45% - 40px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tablet-item {
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+    <script>
+        const cart = [];
+
+        function addToCart(productName) {
+            cart.push(productName);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartSection = document.getElementById('cart-items');
+            cartSection.innerHTML = ''; // Очистить предыдущий контент
+
+            if (cart.length === 0) {
+                cartSection.innerHTML = '<p>Корзина пуста.</p>';
+            } else {
+                cart.forEach(item => {
+                    const p = document.createElement('p');
+                    p.textContent = item;
+                    cartSection.appendChild(p);
+                });
+            }
+        }
+
+        function buy() {
+            const telegramLink = 'https://t.me/younghuvix'; // Замените на имя пользователя продавца
+            window.open(telegramLink, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>ТаблеткоТравы</h1>
+        <nav>
+            <ul>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#cart">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="catalog">
+            <h2>Каталог таблеток с лечебными травами</h2>
+            <div class="tablet-list">
+                <!-- Пример таблеток (добавьте до 115) -->
+                <div class="tablet-item">
+                    <h3>Зелёный Успокоитель</h3>
+                    <p>Снижает тревожность и напряжение.</p>
+                    <button onclick="addToCart('Зелёный Успокоитель')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Солнечный Энергетик</h3>
+                    <p>Улучшает настроение и уровень энергии.</p>
+                    <button onclick="addToCart('Солнечный Энергетик')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Лунный Расслабляющий</h3>
+                    <p>Помогает расслабиться перед сном.</p>
+                    <button onclick="addToCart('Лунный Расслабляющий')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Травяной Бальзам</h3>
+                    <p>Натуральный комплекс для укрепления иммунитета.</p>
+                    <button onclick="addToCart('Травяной Бальзам')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Ночной Сон</h3>
+                    <p>Способствует глубокому и здоровому сну.</p>
+                    <button onclick="addToCart('Ночной Сон')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Утренний Заряд</h3>
+                    <p>Поддерживает бодрость в течение дня.</p>
+                    <button onclick="addToCart('Утренний Заряд')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Вдохновение</h3>
+                    <p>Стимулирует творческое мышление.</p>
+                    <button onclick="addToCart('Вдохновение')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Спокойствие</h3>
+                    <p>Помогает справиться со стрессом.</p>
+                    <button onclick="addToCart('Спокойствие')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Радужный Покой</h3>
+                    <p>Убирает негативные эмоции.</p>
+                    <button onclick="addToCart('Радужный Покой')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Сила Природы</h3>
+                    <p>Энергетик на основе экстрактов растений.</p>
+                    <button onclick="addToCart('Сила Природы')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Летний Ветер</h3>
+                    <p>Легкость и свежесть в каждый момент.</p>
+                    <button onclick="addToCart('Зелёный Успокоитель')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Осенний Уют</h3>
+                    <p>Продукт для повышения настроения в холодное время.</p>
+                    <button onclick="addToCart('Осенний Уют')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Зимняя Тишина</h3>
+                    <p>Способствует расслаблению в зимние вечера.</p>
+                    <button onclick="addToCart('Зимняя Тишина')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Весеннее Пробуждение</h3>
+                    <p>Очищает организм и наполняет энергией.</p>
+                    <button onclick="addToCart('Весеннее Пробуждение')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Эликсир Жизни</h3>
+                    <p>Комплекс витаминов для общего укрепления.</p>
+                    <button onclick="addToCart('Эликсир Жизни')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Травяной Чай</h3>
+                    <p>Успокаивающий чай с экстрактами трав.</p>
+                    <button onclick="addToCart('Травяной Чай')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Иммунный Щит</h3>
+                    <p>Укрепляет иммунную систему.</p>
+                    <button onclick="addToCart('Иммунный Щит')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Энергия Жизни</h3>
+                    <p>Поддержка для активного образа жизни.</p>
+                    <button onclick="addToCart('Энергия Жизни')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Чистота Духа</h3>
+                    <p>Укрепляет эмоциональную устойчивость.</p>
+                    <button onclick="addToCart('Чистота Духа')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Тонизирующий Бустер</h3>
+                    <p>Энергия из природы для повышения работоспособности.</p>
+                    <button onclick="addToCart('Тонизирующий Бустер')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Оasis Успокоения</h3>
+                    <p>Снижает уровень стресса и напряжения.</p>
+                    <button onclick="addToCart('Оasis Успокоения')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+                <div class="tablet-item">
+                    <h3>Научный Экстракт</h3>
+                    <p>Обеспечивает концентрацию и четкость ума.</p>
+                    <button onclick="addToCart('Научный Экстракт')">Добавить в корзину</button>
+                    <button onclick="buy()">Купить</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>О нас</h2>
+            <div class="info-frame">
+                <p>Мы предлагаем только натуральные и эффективные таблетки с лечебными травами.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Контакты</h2>
+            <div class="info-frame">
+                <p>Email:narkotabletki@gmail.com</p>
+                <p>Телефон: +375(33)698 71 93</p>
+            </div>
+            <h2>Корзина</h2>
+            <div class="info-frame">
+                <div id="cart-items">
+                    <p>Корзина пуста.</p>
+                </div>
+                <button onclick="buy()">Купить все</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 ТаблеткоТравы. Все права защищены.</p>
+    </footer>
+</body>
+</html>
